@@ -1,6 +1,6 @@
 # Rick and Morty KMP App
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-blue?logo=kotlin)](https://kotlinlang.org/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.2.0-blue?logo=kotlin)](https://kotlinlang.org/)
 [![Ktor](https://img.shields.io/badge/Ktor-HTTP%20Client-green)](https://ktor.io/)
 [![Room](https://img.shields.io/badge/Room-Database-orange)](https://developer.android.com/training/data-storage/room)
 [![Paging3](https://img.shields.io/badge/Paging-3-yellow)](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
