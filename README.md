@@ -41,7 +41,7 @@ rick-and-morty-kmp/
 │   ├── ui/               
 
 ---
-
+```
 ## ⚙️ Configuración
 
 ### 1. Clonar el repositorio
