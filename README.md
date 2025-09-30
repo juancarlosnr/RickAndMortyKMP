@@ -32,17 +32,13 @@ El objetivo es demostrar cómo estructurar un proyecto **KMP** utilizando:
 
 ```
 rick-and-morty-kmp/
-│── androidApp/           # Módulo Android
-│── iosApp/               # Módulo iOS
-│── shared/               # Módulo compartido KMP
-│   ├── data/             # Repositorios, fuentes de datos
-│   ├── network/          # Ktor API service
-│   ├── db/               # Room database y DAO
-│   ├── di/               # Definiciones de Koin
-│   ├── model/            # Modelos de dominio
-│   ├── paging/           # Lógica de paginación con Paging3
-│   └── util/             # Utilidades
-```
+│── androidApp/           
+│── iosApp/             
+│── shared/              
+│   ├── data/             
+│   ├── di/          
+│   ├── domain/              
+│   ├── ui/               
 
 ---
 
@@ -83,10 +79,10 @@ https://rickandmortyapi.com/api/character
 
 - [x] Configuración de proyecto KMP  
 - [x] Consumo de API con Ktor  
-- [x] Cache local con Room  
+- [x] Añadir room para guardar el personaje diario  
 - [x] Paginación con Paging3  
 - [x] Inyección con Koin  
-- [ ] UI en Compose Multiplatform  
+- [x] UI en Compose Multiplatform  
 - [ ] Tests unitarios y de integración  
 
 ---
