@@ -1,6 +1,8 @@
 package com.juancarlosnr.rickmortykcmp.di
 
+import com.juancarlosnr.rickmortykcmp.data.repositories.RepositoryImpl
 import com.juancarlosnr.rickmortykcmp.data.remote.ApiService
+import com.juancarlosnr.rickmortykcmp.domain.repositories.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -29,4 +31,5 @@ val dataModule = module {
         }
     }
     factoryOf(::ApiService)
+    factory<Repository> { RepositoryImpl(get()) }
 }
