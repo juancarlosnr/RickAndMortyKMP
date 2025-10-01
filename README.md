@@ -28,7 +28,7 @@ El objetivo es demostrar cómo estructurar un proyecto **KMP** utilizando:
 
 ---
 
-## 📂 Estructura del proyecto
+## 📂 Estructura del proyecto 
 
 ```
 rick-and-morty-kmp/
