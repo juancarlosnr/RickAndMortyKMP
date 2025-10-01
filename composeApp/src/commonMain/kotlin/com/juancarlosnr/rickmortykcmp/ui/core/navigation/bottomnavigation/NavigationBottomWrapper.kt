@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.juancarlosnr.rickmortykcmp.ui.core.navigation.Routes
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersScreen
+import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersScreenRoot
 import com.juancarlosnr.rickmortykcmp.ui.home.episodes.EpisodesScreen
 
 @Composable
@@ -25,7 +26,7 @@ fun NavigationBottomWrapper(
         composable(
             route = Routes.Characters.route
         ){
-            CharactersScreen()
+            CharactersScreenRoot()
         }
     }
 }
