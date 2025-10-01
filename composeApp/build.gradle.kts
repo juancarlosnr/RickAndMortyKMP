@@ -57,7 +57,8 @@ kotlin {
             implementation(libs.coil.compose)
             implementation(libs.coil.network.ktor)
 
-
+            implementation(libs.paging.common)
+            implementation(libs.paging.compose.common)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
