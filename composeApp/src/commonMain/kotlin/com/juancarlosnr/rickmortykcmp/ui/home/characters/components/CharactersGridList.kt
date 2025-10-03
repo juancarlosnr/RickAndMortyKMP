@@ -2,6 +2,7 @@ package com.juancarlosnr.rickmortykcmp.ui.home.characters.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import app.cash.paging.compose.LazyPagingItems
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
@@ -40,7 +42,10 @@ fun CharactersGridList(
                 GridItemSpan(2)
             }
         ) {
-            CharacterOfTheDay(characterOfTheDay)
+            Column {
+                Text("Characters", color = Color.Black, fontSize = 24.sp)
+                CharacterOfTheDay(characterOfTheDay)
+            }
         }
         when {
             characters.loadState.refresh is LoadState.Loading && characters.itemCount == 0 ->{

@@ -2,6 +2,7 @@ package com.juancarlosnr.rickmortykcmp.ui.home.characters
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.juancarlosnr.rickmortykcmp.domain.repositories.Repository
 import com.juancarlosnr.rickmortykcmp.domain.usecases.GetRandomCharacterUseCase
 import kotlinx.coroutines.Dispatchers
@@ -36,7 +37,7 @@ class CharactersViewModel(
     private fun getAllCharacters() {
         _state.update { state ->
             state.copy(
-                characters = repository.getAllCharacters()
+                characters = repository.getAllCharacters().cachedIn(viewModelScope)
             )
         }
     }
