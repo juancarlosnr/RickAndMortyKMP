@@ -2,6 +2,7 @@ package com.juancarlosnr.rickmortykcmp.data.remote.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.juancarlosnr.rickmortykcmp.data.mappers.response.toCharacterModel
 import com.juancarlosnr.rickmortykcmp.data.remote.ApiService
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import kotlinx.io.IOException
@@ -28,7 +29,7 @@ class CharactersPagingSource(
             val next = if (response.info.next != null) page + 1 else null
 
             LoadResult.Page(
-                data = characters.map { character -> character.toDomain() },
+                data = characters.map { character -> character.toCharacterModel() },
                 prevKey = prev,
                 nextKey = next
             )

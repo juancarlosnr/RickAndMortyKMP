@@ -4,12 +4,15 @@ import androidx.paging.Pager
 import androidx.paging.PagingData
 import app.cash.paging.PagingConfig
 import com.juancarlosnr.rickmortykcmp.data.database.RickMortyDatabase
+import com.juancarlosnr.rickmortykcmp.data.mappers.entities.toCharacterOfTheDayModel
+import com.juancarlosnr.rickmortykcmp.data.mappers.model.toCharacterOfTheDayEntity
+import com.juancarlosnr.rickmortykcmp.data.mappers.response.toCharacterModel
 import com.juancarlosnr.rickmortykcmp.data.remote.ApiService
 import com.juancarlosnr.rickmortykcmp.data.remote.paging.CharactersPagingSource
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.domain.model.CharacterOfTheDayModel
 import com.juancarlosnr.rickmortykcmp.domain.repositories.Repository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
 
 class RepositoryImpl(
     private val apiService: ApiService,
@@ -23,7 +26,7 @@ class RepositoryImpl(
     }
 
     override suspend fun getSingleCharacter(id: String): CharacterModel {
-        return apiService.getSingleCharacter(id).toDomain()
+        return apiService.getSingleCharacter(id).toCharacterModel()
     }
 
     override fun getAllCharacters(): Flow<PagingData<CharacterModel>> {
@@ -38,7 +41,13 @@ class RepositoryImpl(
         ).flow
     }
 
-    override suspend fun getCharacterDB() {
-        rickMortyDatabase.getPreferencesDAO().getCharacterOfTheDayDB()
+    override suspend fun getCharacterDB(): CharacterOfTheDayModel? {
+        return rickMortyDatabase.getPreferencesDAO().getCharacterOfTheDayDB()
+            ?.toCharacterOfTheDayModel()
+    }
+
+    override suspend fun saveCharacterDB(characterOfTheDayModel: CharacterOfTheDayModel) {
+        rickMortyDatabase.getPreferencesDAO()
+            .saveCharacter(characterOfTheDayModel.toCharacterOfTheDayEntity())
     }
 }
