@@ -11,6 +11,8 @@ class GetRandomCharacterUseCase(
     private val repository: Repository
 ) {
     suspend operator fun invoke(): CharacterModel{
+
+        repository.getCharacterDB()
         val random = (1..826).random()
         return repository.getSingleCharacter(random.toString())
     }

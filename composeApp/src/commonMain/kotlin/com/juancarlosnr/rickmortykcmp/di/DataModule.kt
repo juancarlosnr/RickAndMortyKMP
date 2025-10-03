@@ -32,6 +32,6 @@ val dataModule = module {
         }
     }
     factoryOf(::ApiService)
-    factory<Repository> { RepositoryImpl(get(),get()) }
+    factory<Repository> { RepositoryImpl(get(),get(),get()) }
     factoryOf(::CharactersPagingSource)
 }
