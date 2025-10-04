@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CharactersWrapperResponse(
     @SerialName("info") val info: InfoResponse,
-    @SerialName("results") val results: List<CharacterResponse>
+    @SerialName("results") val listCharacters: List<CharacterResponse>
 )

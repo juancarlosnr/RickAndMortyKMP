@@ -23,7 +23,7 @@ class CharactersPagingSource(
         return try {
             val page = params.key ?: 1
             val response = api.getAllCharacters(page)
-            val characters = response.results
+            val characters = response.listCharacters
 
             val prev = if (page == 1) null else page - 1
             val next = if (response.info.next != null) page + 1 else null
