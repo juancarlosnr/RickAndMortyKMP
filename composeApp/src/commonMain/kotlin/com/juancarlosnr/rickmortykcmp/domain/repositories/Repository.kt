@@ -4,6 +4,7 @@ import androidx.paging.PagingData
 import com.juancarlosnr.rickmortykcmp.data.database.entities.CharacterOfTheDayEntity
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterOfTheDayModel
+import com.juancarlosnr.rickmortykcmp.domain.model.EpisodeModel
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
@@ -11,4 +12,5 @@ interface Repository {
     fun getAllCharacters(): Flow<PagingData<CharacterModel>>
     suspend fun getCharacterDB(): CharacterOfTheDayModel?
     suspend fun saveCharacterDB(characterOfTheDayModel: CharacterOfTheDayModel)
+    fun getAllEpisodes(): Flow<PagingData<EpisodeModel>>
 }
