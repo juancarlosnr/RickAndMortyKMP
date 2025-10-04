@@ -84,7 +84,8 @@ https://rickandmortyapi.com/api/character
 - [x] Inyección con Koin  
 - [x] UI en Compose Multiplatform  
 - [ ] Añadir idiomas inglés y español
-- [ ] Tests unitarios y de integración  
+- [ ] Tests unitarios y de integración
+- [ ] Añadir Github Actions
 
 
 ---
