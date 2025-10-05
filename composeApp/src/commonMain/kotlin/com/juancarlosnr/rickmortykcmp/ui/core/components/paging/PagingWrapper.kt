@@ -1,4 +1,4 @@
-package com.juancarlosnr.rickmortykcmp.ui.core.components
+package com.juancarlosnr.rickmortykcmp.ui.core.components.paging
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow

@@ -1,4 +1,4 @@
-package com.juancarlosnr.rickmortykcmp.ui.core.components
+package com.juancarlosnr.rickmortykcmp.ui.core.components.paging
 
 enum class PagingType {
     ROW,

@@ -25,11 +25,14 @@ import rickandmortykmp.composeapp.generated.resources.season6
 import rickandmortykmp.composeapp.generated.resources.season7
 
 @Composable
-fun EpisodeItemList(episode: EpisodeModel) {
+fun EpisodeItemList(
+    episode: EpisodeModel,
+    onEpisodeSelected: (String) -> Unit
+) {
     Column(modifier = Modifier.width(120.dp)
         .padding(horizontal = 8.dp)
         .clickable {
-
+            onEpisodeSelected(episode.videoUrl)
         }) {
         Image(
             modifier = Modifier.height(180.dp).fillMaxWidth(),
