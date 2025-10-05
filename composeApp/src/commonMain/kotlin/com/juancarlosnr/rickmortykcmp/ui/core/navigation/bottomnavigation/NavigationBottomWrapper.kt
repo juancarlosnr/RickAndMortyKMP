@@ -4,14 +4,16 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.juancarlosnr.rickmortykcmp.ui.core.navigation.CharacterDetail
 import com.juancarlosnr.rickmortykcmp.ui.core.navigation.Routes
-import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersScreen
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersScreenRoot
 import com.juancarlosnr.rickmortykcmp.ui.home.episodes.EpisodesScreen
+import kotlinx.serialization.json.Json
 
 @Composable
 fun NavigationBottomWrapper(
-    navController: NavHostController
+    navController: NavHostController,
+    mainNavController: NavHostController
 ){
     NavHost(
         navController = navController,
@@ -26,7 +28,12 @@ fun NavigationBottomWrapper(
         composable(
             route = Routes.Characters.route
         ){
-            CharactersScreenRoot()
+            CharactersScreenRoot(
+                navigateToDetail = { characterModel ->
+                    val encode = Json.encodeToString(characterModel)
+                    mainNavController.navigate(CharacterDetail(encode))
+                }
+            )
         }
     }
 }

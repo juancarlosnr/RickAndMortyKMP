@@ -17,6 +17,9 @@ fun CharactersScreenPreview() {
                 isAlive = true,
                 image = "image"
             )
-        )
+        ),
+        onItemSelected = {
+
+        }
     )
 }

@@ -25,7 +25,10 @@ import rickandmortykmp.composeapp.generated.resources.Res
 import rickandmortykmp.composeapp.generated.resources.rickface
 
 @Composable
-fun CharacterItemList(characterModel: CharacterModel) {
+fun CharacterItemList(
+    characterModel: CharacterModel,
+    onItemSelected: (CharacterModel) -> Unit
+) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(24))
@@ -33,7 +36,7 @@ fun CharacterItemList(characterModel: CharacterModel) {
             .fillMaxWidth()
             .height(150.dp)
             .clickable{
-
+                onItemSelected(characterModel)
             },
         contentAlignment = Alignment.BottomCenter
     ){

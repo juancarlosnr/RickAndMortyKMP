@@ -27,7 +27,8 @@ import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 @Composable
 fun CharactersGridList(
     characterOfTheDay: CharacterModel?,
-    characters: LazyPagingItems<CharacterModel>
+    characters: LazyPagingItems<CharacterModel>,
+    onItemSelected: (CharacterModel) -> Unit
 ) {
     LazyVerticalGrid(
         modifier = Modifier
@@ -78,7 +79,10 @@ fun CharactersGridList(
             else -> {
                 items(characters.itemCount){ pos ->
                     characters[pos]?.let { characterModel ->
-                        CharacterItemList(characterModel)
+                        CharacterItemList(
+                            characterModel = characterModel,
+                            onItemSelected = onItemSelected
+                        )
                     }
                 }
                 if(characters.loadState.append is LoadState.Loading){

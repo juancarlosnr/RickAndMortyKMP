@@ -18,7 +18,7 @@ import com.juancarlosnr.rickmortykcmp.ui.core.navigation.bottomnavigation.Naviga
 import com.juancarlosnr.rickmortykcmp.ui.core.navigation.bottomnavigation.getBottomBarItems
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(mainNavController: NavHostController) {
     val items = getBottomBarItems()
     val navController = rememberNavController()
     Scaffold(
@@ -33,7 +33,7 @@ fun HomeScreen(){
             modifier = Modifier
                 .padding(padding)
         ) {
-            NavigationBottomWrapper(navController)
+            NavigationBottomWrapper(navController,mainNavController)
         }
     }
 }
