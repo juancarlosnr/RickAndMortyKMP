@@ -87,5 +87,4 @@ https://rickandmortyapi.com/api/character
 - [ ] Tests unitarios y de integración
 - [ ] Añadir Github Actions
 
-
 ---
