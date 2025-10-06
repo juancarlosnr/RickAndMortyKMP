@@ -9,6 +9,9 @@ fun CharacterResponse.toCharacterModel(): CharacterModel{
         name = this.name,
         image = this.image,
         isAlive = this.status.lowercase() == "alive",
-        specie = this.specie
+        specie = this.specie,
+        gender = this.gender,
+        origin = this.origin.name,
+        episodes = this.episodes.map { it.substringAfterLast("/") }
     )
 }

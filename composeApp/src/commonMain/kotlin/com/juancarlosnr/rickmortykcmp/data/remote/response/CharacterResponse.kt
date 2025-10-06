@@ -10,4 +10,7 @@ data class CharacterResponse(
     @SerialName("status")val status:String,
     @SerialName("image")val image: String,
     @SerialName("species")val specie: String,
+    @SerialName("gender") val gender: String,
+    @SerialName("origin") val origin: OriginResponse,
+    @SerialName("episode") val episodes: List<String>
 )

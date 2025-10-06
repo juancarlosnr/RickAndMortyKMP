@@ -3,6 +3,7 @@ package com.juancarlosnr.rickmortykcmp.data.mappers.entities
 import com.juancarlosnr.rickmortykcmp.data.database.entities.CharacterOfTheDayEntity
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterOfTheDayModel
+import kotlinx.serialization.json.Json
 
 fun CharacterOfTheDayEntity.toCharacterOfTheDayModel(): CharacterOfTheDayModel{
     return CharacterOfTheDayModel(
@@ -11,7 +12,10 @@ fun CharacterOfTheDayEntity.toCharacterOfTheDayModel(): CharacterOfTheDayModel{
             name = this.name,
             isAlive = this.isAlive,
             image = this.image,
-            specie = this.specie
+            specie = this.specie,
+            gender = this.gender,
+            origin = this.origin,
+            episodes = Json.decodeFromString<List<String>>(this.episodes)
         ),
         selectedDate = this.selectedDate
     )

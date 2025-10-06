@@ -16,7 +16,10 @@ fun CharactersScreenPreview() {
                 name = "Rick",
                 isAlive = true,
                 image = "image",
-                specie = "Alien"
+                specie = "Alien",
+                gender = "Male",
+                origin = "Earth",
+                episodes = emptyList()
             )
         ),
         onItemSelected = {

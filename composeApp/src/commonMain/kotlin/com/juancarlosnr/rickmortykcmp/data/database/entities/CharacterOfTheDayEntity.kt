@@ -11,5 +11,8 @@ data class CharacterOfTheDayEntity(
     val isAlive: Boolean,
     val image: String,
     val selectedDate: String,
-    val specie: String
+    val specie: String,
+    val gender: String,
+    val origin: String,
+    val episodes: String
 )

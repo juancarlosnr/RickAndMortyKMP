@@ -8,5 +8,8 @@ data class CharacterModel(
     val name:String,
     val isAlive: Boolean,
     val image: String,
-    val specie: String
+    val specie: String,
+    val gender: String,
+    val origin: String,
+    val episodes: List<String>
 )

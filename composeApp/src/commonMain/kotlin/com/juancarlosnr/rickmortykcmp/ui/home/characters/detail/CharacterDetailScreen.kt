@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.components.CharacterInformation
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.components.MainHeader
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parameterSetOf
@@ -29,6 +30,9 @@ fun CharacterDetailScreen(
             .background(Color.Black)
     ) {
         MainHeader(
+            characterModel = state.characterModel
+        )
+        CharacterInformation(
             characterModel = state.characterModel
         )
     }
