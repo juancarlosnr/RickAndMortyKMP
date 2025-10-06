@@ -15,6 +15,7 @@ El objetivo es demostrar cómo estructurar un proyecto **KMP** utilizando:
 - **Paging 3** para paginación de datos  
 - **Koin** para inyección de dependencias  
 
+
 ---
 
 ## 🚀 Tecnologías y librerías
