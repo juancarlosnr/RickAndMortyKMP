@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.ui.core.Pink
 import com.juancarlosnr.rickmortykcmp.ui.core.extensions.aliveBackground
 import com.juancarlosnr.rickmortykcmp.ui.core.extensions.aliveBorder
 import rickandmortykmp.composeapp.generated.resources.Res
@@ -54,7 +55,7 @@ fun CharacterHeader(
         ) {
             Text(
                 text = characterModel.name,
-                color = Color.Black,
+                color = Pink,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )

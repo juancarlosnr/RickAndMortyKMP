@@ -1,9 +1,10 @@
 package com.juancarlosnr.rickmortykcmp.ui.home.characters.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,11 +19,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import app.cash.paging.compose.LazyPagingItems
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundPrimaryColor
+import com.juancarlosnr.rickmortykcmp.ui.core.DefaultTextColor
+import com.juancarlosnr.rickmortykcmp.ui.core.Green
 
 @Composable
 fun CharactersGridList(
@@ -33,6 +38,7 @@ fun CharactersGridList(
     LazyVerticalGrid(
         modifier = Modifier
             .fillMaxSize()
+            .background(BackgroundPrimaryColor)
             .padding(horizontal = 16.dp),
         columns = GridCells.Fixed(2),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -44,7 +50,13 @@ fun CharactersGridList(
             }
         ) {
             Column {
-                Text("Characters", color = Color.Black, fontSize = 24.sp)
+                Text(
+                    "Characters",
+                    color = DefaultTextColor,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.height(6.dp))
                 CharacterOfTheDay(characterOfTheDay)
             }
         }
@@ -64,7 +76,7 @@ fun CharactersGridList(
                         CircularProgressIndicator(
                             modifier = Modifier
                                 .size(64.dp),
-                            color = Color.Red
+                            color = Color.Green
                         )
                     }
                 }
@@ -100,7 +112,7 @@ fun CharactersGridList(
                             CircularProgressIndicator(
                                 modifier = Modifier
                                     .size(64.dp),
-                                color = Color.Red
+                                color = Green
                             )
                         }
                     }

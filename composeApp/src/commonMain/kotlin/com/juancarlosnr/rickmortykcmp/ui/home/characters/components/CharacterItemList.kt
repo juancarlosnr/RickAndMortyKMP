@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.ui.core.Green
 import org.jetbrains.compose.resources.painterResource
 import rickandmortykmp.composeapp.generated.resources.Res
 import rickandmortykmp.composeapp.generated.resources.rickface
@@ -32,7 +33,7 @@ fun CharacterItemList(
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(24))
-            .border(2.dp,Color.Green, shape = RoundedCornerShape(0,24,0,24))
+            .border(2.dp, Green, shape = RoundedCornerShape(0,24,0,24))
             .fillMaxWidth()
             .height(150.dp)
             .clickable{

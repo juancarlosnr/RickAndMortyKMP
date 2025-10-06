@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.ui.core.Green
 import com.juancarlosnr.rickmortykcmp.ui.core.extensions.vertical
 
 @Composable
@@ -40,7 +41,7 @@ fun CharacterOfTheDay(characterModel: CharacterModel? = null) {
                 contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator(
-                    color = Color.Green
+                    color = Green
                 )
             }
         } else {

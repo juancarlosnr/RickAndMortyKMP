@@ -3,16 +3,20 @@ package com.juancarlosnr.rickmortykcmp.ui.home.episodes.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.domain.model.EpisodeModel
 import com.juancarlosnr.rickmortykcmp.domain.model.SeasonEpisode
+import com.juancarlosnr.rickmortykcmp.ui.core.DefaultTextColor
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import rickandmortykmp.composeapp.generated.resources.Res
@@ -43,6 +47,12 @@ fun EpisodeItemList(
                     episode.season
                 )
             )
+        )
+        Spacer(modifier = Modifier.height(2.dp))
+        Text(
+            text = episode.episode,
+            color = DefaultTextColor,
+            fontWeight = FontWeight.Bold
         )
     }
 }
