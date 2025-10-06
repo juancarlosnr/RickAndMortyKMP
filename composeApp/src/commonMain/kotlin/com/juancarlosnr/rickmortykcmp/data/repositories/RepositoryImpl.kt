@@ -7,6 +7,7 @@ import com.juancarlosnr.rickmortykcmp.data.database.RickMortyDatabase
 import com.juancarlosnr.rickmortykcmp.data.mappers.entities.toCharacterOfTheDayModel
 import com.juancarlosnr.rickmortykcmp.data.mappers.model.toCharacterOfTheDayEntity
 import com.juancarlosnr.rickmortykcmp.data.mappers.response.toCharacterModel
+import com.juancarlosnr.rickmortykcmp.data.mappers.response.toEpisodeModel
 import com.juancarlosnr.rickmortykcmp.data.remote.ApiService
 import com.juancarlosnr.rickmortykcmp.data.remote.paging.CharactersPagingSource
 import com.juancarlosnr.rickmortykcmp.data.remote.paging.EpisodesPagingSource
@@ -62,5 +63,20 @@ class RepositoryImpl(
             ),
             pagingSourceFactory = { episodesPagingSource }
         ).flow
+    }
+
+    override suspend fun getEpisodesForCharacter(episodes: List<String>): List<EpisodeModel> {
+        return when{
+            episodes.isEmpty() -> emptyList()
+            episodes.size > 1 -> {
+                apiService.getEpisodesForCharacter(episodes.joinToString(","))
+                    .map { episodeResponse ->
+                        episodeResponse.toEpisodeModel()
+                    }
+            }
+            else -> {
+                listOf(apiService.getSingleEpisode(episodes.first()).toEpisodeModel())
+            }
+        }
     }
 }
