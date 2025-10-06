@@ -8,6 +8,7 @@ fun CharacterResponse.toCharacterModel(): CharacterModel{
         id = this.id,
         name = this.name,
         image = this.image,
-        isAlive = this.status.lowercase() == "alive"
+        isAlive = this.status.lowercase() == "alive",
+        specie = this.specie
     )
 }

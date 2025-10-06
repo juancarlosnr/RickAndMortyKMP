@@ -10,7 +10,8 @@ fun CharacterOfTheDayEntity.toCharacterOfTheDayModel(): CharacterOfTheDayModel{
             id = this.id,
             name = this.name,
             isAlive = this.isAlive,
-            image = this.image
+            image = this.image,
+            specie = this.specie
         ),
         selectedDate = this.selectedDate
     )

@@ -15,7 +15,8 @@ fun CharactersScreenPreview() {
                 id = 1,
                 name = "Rick",
                 isAlive = true,
-                image = "image"
+                image = "image",
+                specie = "Alien"
             )
         ),
         onItemSelected = {

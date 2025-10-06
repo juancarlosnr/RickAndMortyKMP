@@ -8,5 +8,6 @@ data class CharacterResponse(
     @SerialName("id") val id: Int,
     @SerialName("name") val name: String,
     @SerialName("status")val status:String,
-    @SerialName("image")val image: String
+    @SerialName("image")val image: String,
+    @SerialName("species")val specie: String,
 )

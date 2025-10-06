@@ -26,7 +26,7 @@ fun CharacterDetailScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.Black)
     ) {
         MainHeader(
             characterModel = state.characterModel
