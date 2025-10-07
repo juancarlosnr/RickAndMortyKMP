@@ -1,13 +1,25 @@
 package com.juancarlosnr.rickmortykcmp.ui.core.components.paging
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import app.cash.paging.compose.LazyPagingItems
+import com.juancarlosnr.rickmortykcmp.ui.core.Green
+import kotlin.math.max
 
 @Composable
 fun <T: Any> PagingWrapper(
@@ -15,9 +27,12 @@ fun <T: Any> PagingWrapper(
     pagingItems: LazyPagingItems<T>,
     verticalGridCells: GridCells.Fixed = GridCells.Fixed(2),
     horizontalGridCells: GridCells.Fixed = GridCells.Fixed(2),
+    horizontalArrangement: Arrangement.Horizontal = Arrangement.spacedBy(16.dp),
+    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(16.dp),
     initialView: @Composable () -> Unit = {},
     emptyView: @Composable () -> Unit = {},
     extraItemsView: @Composable () -> Unit = {},
+    extraView: @Composable () -> Unit = {},
     itemView: @Composable (T) -> Unit
 ){
     when{
@@ -33,6 +48,9 @@ fun <T: Any> PagingWrapper(
             when(pagingType){
                 PagingType.ROW -> {
                     LazyRow {
+                        item {
+                            extraView()
+                        }
                         items(pagingItems.itemCount){ pos ->
                             pagingItems[pos]?.let { item ->
                                 itemView(item)
@@ -42,6 +60,9 @@ fun <T: Any> PagingWrapper(
                 }
                 PagingType.COLUMN -> {
                     LazyColumn {
+                        item {
+                            extraView()
+                        }
                         items(pagingItems.itemCount){ pos ->
                             pagingItems[pos]?.let { item ->
                                 itemView(item)
@@ -50,7 +71,18 @@ fun <T: Any> PagingWrapper(
                     }
                 }
                 PagingType.VERTICAL_GRID -> {
-                    LazyVerticalGrid(verticalGridCells) {
+                    LazyVerticalGrid(
+                        columns = verticalGridCells,
+                        horizontalArrangement = horizontalArrangement,
+                        verticalArrangement = verticalArrangement
+                    ) {
+                        item(
+                            span = {
+                                GridItemSpan(maxLineSpan)
+                            }
+                        ) {
+                            extraView()
+                        }
                         items(pagingItems.itemCount){ pos ->
                             pagingItems[pos]?.let { item ->
                                 itemView(item)
@@ -60,6 +92,13 @@ fun <T: Any> PagingWrapper(
                 }
                 PagingType.HORIZONTAL_GRID -> {
                     LazyHorizontalGrid(horizontalGridCells) {
+                        item(
+                            span = {
+                                GridItemSpan(maxLineSpan)
+                            }
+                        ) {
+                            extraView()
+                        }
                         items(pagingItems.itemCount){ pos ->
                             pagingItems[pos]?.let { item ->
                                 itemView(item)
@@ -68,7 +107,6 @@ fun <T: Any> PagingWrapper(
                     }
                 }
             }
-
 
             if(pagingItems.loadState.append is LoadState.Loading){
                 extraItemsView()

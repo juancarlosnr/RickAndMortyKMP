@@ -1,7 +1,6 @@
 package com.juancarlosnr.rickmortykcmp.ui.home.characters.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,9 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,12 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.paging.LoadState
 import app.cash.paging.compose.LazyPagingItems
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundPrimaryColor
 import com.juancarlosnr.rickmortykcmp.ui.core.DefaultTextColor
 import com.juancarlosnr.rickmortykcmp.ui.core.Green
+import com.juancarlosnr.rickmortykcmp.ui.core.components.paging.PagingType
+import com.juancarlosnr.rickmortykcmp.ui.core.components.paging.PagingWrapper
 
 @Composable
 fun CharactersGridList(
@@ -35,89 +32,63 @@ fun CharactersGridList(
     characters: LazyPagingItems<CharacterModel>,
     onItemSelected: (CharacterModel) -> Unit
 ) {
-    LazyVerticalGrid(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundPrimaryColor)
             .padding(horizontal = 16.dp),
-        columns = GridCells.Fixed(2),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        item(
-            span = {
-                GridItemSpan(2)
-            }
-        ) {
-            Column {
-                Text(
-                    "Characters",
-                    color = DefaultTextColor,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-                Spacer(modifier = Modifier.height(6.dp))
-                CharacterOfTheDay(characterOfTheDay)
-            }
-        }
-        when {
-            characters.loadState.refresh is LoadState.Loading && characters.itemCount == 0 ->{
-                //Initial loading
-                item(
-                    span = {
-                        GridItemSpan(2)
-                    }
-                ) {
-                    Box(
+        PagingWrapper(
+            pagingType = PagingType.VERTICAL_GRID,
+            pagingItems = characters,
+            initialView = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ){
+                    CircularProgressIndicator(
                         modifier = Modifier
-                            .fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ){
-                        CircularProgressIndicator(
-                            modifier = Modifier
-                                .size(64.dp),
-                            color = Color.Green
-                        )
-                    }
+                            .size(64.dp),
+                        color = Color.Green
+                    )
+                }
+            },
+            itemView = { characterModel ->
+                CharacterItemList(
+                    characterModel = characterModel,
+                    onItemSelected = onItemSelected
+                )
+            },
+            emptyView = {
+                Text("No hay personajes")
+            },
+            extraItemsView = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp),
+                    contentAlignment = Alignment.Center
+                ){
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .size(64.dp),
+                        color = Green
+                    )
+                }
+            },
+            extraView = {
+                Column {
+                    Text(
+                        "Characters",
+                        color = DefaultTextColor,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    CharacterOfTheDay(characterOfTheDay)
                 }
             }
-            characters.loadState.refresh is LoadState.NotLoading && characters.itemCount == 0 -> {
-                //Empty api
-                item {
-                    Text("No hay personajes")
-                }
-            }
-
-            else -> {
-                items(characters.itemCount){ pos ->
-                    characters[pos]?.let { characterModel ->
-                        CharacterItemList(
-                            characterModel = characterModel,
-                            onItemSelected = onItemSelected
-                        )
-                    }
-                }
-                if(characters.loadState.append is LoadState.Loading){
-                    item(
-                        span = {
-                            GridItemSpan(2)
-                        }
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(100.dp),
-                            contentAlignment = Alignment.Center
-                        ){
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .size(64.dp),
-                                color = Green
-                            )
-                        }
-                    }
-                }
-            }
-        }
+        )
     }
 }
