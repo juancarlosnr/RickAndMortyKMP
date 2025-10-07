@@ -87,5 +87,6 @@ https://rickandmortyapi.com/api/character
 - [ ] Añadir idiomas inglés y español
 - [ ] Tests unitarios y de integración
 - [ ] Añadir Github Actions
+- [ ] Añadir Previews para cada pantalla
 
 ---
