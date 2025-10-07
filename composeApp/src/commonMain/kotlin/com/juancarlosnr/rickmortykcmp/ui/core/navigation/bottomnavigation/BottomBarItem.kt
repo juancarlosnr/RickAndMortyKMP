@@ -1,11 +1,18 @@
 package com.juancarlosnr.rickmortykcmp.ui.core.navigation.bottomnavigation
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.ui.core.navigation.Routes
+import org.jetbrains.compose.resources.painterResource
+import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.ic_characters
+import rickandmortykmp.composeapp.generated.resources.ic_player
 
 sealed class BottomBarItem {
     abstract val route:String
@@ -17,7 +24,9 @@ sealed class BottomBarItem {
         override val title: String = "Episodes",
         override val icon: @Composable () -> Unit = {
             Icon(
-                imageVector = Icons.Default.Home,
+                modifier = Modifier
+                    .size(24.dp),
+                painter = painterResource(Res.drawable.ic_player),
                 contentDescription = ""
             )
         }
@@ -28,7 +37,9 @@ sealed class BottomBarItem {
         override val title: String = "Characters",
         override val icon: @Composable () -> Unit = {
             Icon(
-                imageVector = Icons.Default.Person,
+                modifier = Modifier
+                    .size(24.dp),
+                painter = painterResource(Res.drawable.ic_characters),
                 contentDescription = ""
             )
         }
