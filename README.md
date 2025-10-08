@@ -86,7 +86,7 @@ https://rickandmortyapi.com/api/character
 - [x] UI en Compose Multiplatform  
 - [ ] Añadir idiomas inglés y español
 - [ ] Tests unitarios y de integración
-- [ ] Añadir Github Actions
+- [x] Añadir Github Actions
 - [ ] Añadir Previews para cada pantalla
 
 ---
