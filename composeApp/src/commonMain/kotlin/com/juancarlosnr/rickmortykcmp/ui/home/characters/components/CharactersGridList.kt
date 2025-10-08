@@ -25,12 +25,13 @@ import com.juancarlosnr.rickmortykcmp.ui.core.DefaultTextColor
 import com.juancarlosnr.rickmortykcmp.ui.core.Green
 import com.juancarlosnr.rickmortykcmp.ui.core.components.paging.PagingType
 import com.juancarlosnr.rickmortykcmp.ui.core.components.paging.PagingWrapper
+import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersEvent
 
 @Composable
 fun CharactersGridList(
     characterOfTheDay: CharacterModel?,
     characters: LazyPagingItems<CharacterModel>,
-    onItemSelected: (CharacterModel) -> Unit
+    onEvent: (CharactersEvent) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -57,7 +58,9 @@ fun CharactersGridList(
             itemView = { characterModel ->
                 CharacterItemList(
                     characterModel = characterModel,
-                    onItemSelected = onItemSelected
+                    onItemSelected = { character  ->
+                        onEvent(CharactersEvent.CharacterClicked(character))
+                    }
                 )
             },
             emptyView = {

@@ -22,7 +22,7 @@ fun CharactersScreenPreview() {
                 episodes = emptyList()
             )
         ),
-        onItemSelected = {
+        onEvent = {
 
         }
     )

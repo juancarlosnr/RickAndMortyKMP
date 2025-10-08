@@ -14,7 +14,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundPrimaryColor
@@ -25,15 +24,24 @@ import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.components.MainH
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parameterSetOf
 
+
 @Composable
-fun CharacterDetailScreen(
+fun CharacterDetailScreenRoot(
     characterModel: CharacterModel
 ) {
-
     val characterDetailViewModel =
         koinViewModel<CharacterDetailViewModel>(parameters = { parameterSetOf(characterModel) })
 
     val state by characterDetailViewModel.uiState.collectAsState()
+    CharacterDetailScreen(
+        state = state
+    )
+}
+
+@Composable
+fun CharacterDetailScreen(
+    state: CharacterDetailState
+) {
     val scrollState = rememberScrollState()
 
     Column(
@@ -66,7 +74,5 @@ fun CharacterDetailScreen(
                 episodes = state.episodes
             )
         }
-
     }
-
 }

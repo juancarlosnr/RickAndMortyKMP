@@ -21,11 +21,23 @@ import com.juancarlosnr.rickmortykcmp.ui.home.episodes.components.EpisodePlayer
 import com.juancarlosnr.rickmortykcmp.ui.home.episodes.components.PlaceHolderPlayer
 import org.koin.compose.viewmodel.koinViewModel
 
-@Composable
-fun EpisodesScreen(){
-    val episodesViewModel = koinViewModel<EpisodesViewModel>()
 
+@Composable
+fun EpisodesScreenRoot(){
+    val episodesViewModel = koinViewModel<EpisodesViewModel>()
     val state by episodesViewModel.state.collectAsState()
+    EpisodesScreen(
+        state = state,
+        onEvent = episodesViewModel::onEvent
+    )
+}
+
+@Composable
+fun EpisodesScreen(
+    state:EpisodesState,
+    onEvent: (EpisodesEvent) -> Unit
+){
+
     val episodes = state.episodes.collectAsLazyPagingItems()
 
     Column(
@@ -44,7 +56,7 @@ fun EpisodesScreen(){
                 EpisodeItemList(
                     episode = episode,
                     onEpisodeSelected = { url ->
-                        episodesViewModel.onPlaySelected(url)
+                        onEvent(EpisodesEvent.PlayClicked(url))
                     }
                 )
             }
@@ -55,7 +67,7 @@ fun EpisodesScreen(){
                 EpisodePlayer(
                     url = state.playVideo,
                     onCloseVideo = {
-                        episodesViewModel.onCloseVideo()
+                        onEvent(EpisodesEvent.CloseVideoClicked)
                     }
                 )
             }else{

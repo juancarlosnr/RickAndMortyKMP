@@ -9,6 +9,7 @@ import com.juancarlosnr.rickmortykcmp.ui.core.navigation.CharacterDetail
 import com.juancarlosnr.rickmortykcmp.ui.core.navigation.Routes
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersScreenRoot
 import com.juancarlosnr.rickmortykcmp.ui.home.episodes.EpisodesScreen
+import com.juancarlosnr.rickmortykcmp.ui.home.episodes.EpisodesScreenRoot
 import kotlinx.serialization.json.Json
 
 @Composable
@@ -23,7 +24,7 @@ fun NavigationBottomWrapper(
         composable(
             route = Routes.Episodes.route
         ){
-            EpisodesScreen()
+            EpisodesScreenRoot()
         }
 
         composable(

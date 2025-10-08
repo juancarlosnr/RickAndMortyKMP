@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.ui.home.HomeScreen
-import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.CharacterDetailScreen
+import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.CharacterDetailScreenRoot
 import kotlinx.serialization.json.Json
 
 @Composable
@@ -24,7 +24,7 @@ fun NavigationWrapper(){
         composable<CharacterDetail>{ navBackStackEntry ->
             val characterDetailEncoding = navBackStackEntry.toRoute<CharacterDetail>()
             val characterModel = Json.decodeFromString<CharacterModel>(characterDetailEncoding.characterModel)
-            CharacterDetailScreen(
+            CharacterDetailScreenRoot(
                 characterModel
             )
         }

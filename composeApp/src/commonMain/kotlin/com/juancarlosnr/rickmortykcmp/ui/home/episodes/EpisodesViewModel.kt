@@ -23,13 +23,20 @@ class EpisodesViewModel(
         }
     }
 
-    fun onPlaySelected(url: String){
+    fun onEvent(episodesEvent: EpisodesEvent){
+        when(episodesEvent){
+            EpisodesEvent.CloseVideoClicked -> closeVideo()
+            is EpisodesEvent.PlayClicked -> playVideo(episodesEvent.url)
+        }
+    }
+
+    fun playVideo(url: String){
         _state.update { state ->
             state.copy(playVideo = url)
         }
     }
 
-    fun onCloseVideo(){
+    fun closeVideo(){
         _state.update { state ->
             state.copy(playVideo = "")
         }
