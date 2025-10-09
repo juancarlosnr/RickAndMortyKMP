@@ -43,7 +43,11 @@ fun NavigationWrapper(){
         }
 
         composable<Settings>{
-            SettingsScreenRoot()
+            SettingsScreenRoot(
+                navigateBack = {
+                    mainNavController.popBackStack()
+                }
+            )
         }
     }
 }

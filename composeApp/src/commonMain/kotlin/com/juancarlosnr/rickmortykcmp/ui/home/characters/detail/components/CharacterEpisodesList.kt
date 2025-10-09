@@ -17,6 +17,9 @@ import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.domain.model.EpisodeModel
 import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundTertiaryColor
 import com.juancarlosnr.rickmortykcmp.ui.core.components.TextTitle
+import org.jetbrains.compose.resources.stringResource
+import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.episode_list_title
 
 @Composable
 fun CharacterEpisodesList(
@@ -42,7 +45,7 @@ fun CharacterEpisodesList(
             } else {
                 Column {
                     TextTitle(
-                        text = "Episode List"
+                        text = stringResource(Res.string.episode_list_title)
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     episodes.forEach { episode ->

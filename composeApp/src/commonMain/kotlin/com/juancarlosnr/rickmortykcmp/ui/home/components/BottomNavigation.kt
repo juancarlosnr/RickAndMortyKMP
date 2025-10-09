@@ -14,6 +14,7 @@ import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundTertiaryColor
 import com.juancarlosnr.rickmortykcmp.ui.core.DefaultTextColor
 import com.juancarlosnr.rickmortykcmp.ui.core.Green
 import com.juancarlosnr.rickmortykcmp.ui.core.navigation.bottomnavigation.BottomBarItem
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BottomNavigation(
@@ -37,7 +38,7 @@ fun BottomNavigation(
                 icon = bottomBarItem.icon,
                 label = {
                     Text(
-                        text = bottomBarItem.title,
+                        text = stringResource(bottomBarItem.title),
                         color = DefaultTextColor
                     )
                 },

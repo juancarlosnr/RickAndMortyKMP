@@ -1,3 +1,15 @@
 <resources>
-    <string name="selected_language">Select language:</string>
+    <string name="selected_language">Select language</string>
+    <string name="episodes_tab">Episodes</string>
+    <string name="characters_tab">Characters</string>
+    <string name="placeholder_player">"Aw jeez, you gotta click the video, guys! I mean, it might be important or something!"</string>
+    <string name="empty_characters">There are no characters</string>
+    <string name="characters_title">Characters</string>
+    <string name="episode_list_title">Episode List</string>
+    <string name="specie">Species: </string>
+    <string name="alive">alive</string>
+    <string name="dead">dead</string>
+    <string name="character_information_title">About the character</string>
+    <string name="origin">Origin</string>
+    <string name="gender">Gender</string>
 </resources>

@@ -28,7 +28,11 @@ import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.ui.core.Pink
 import com.juancarlosnr.rickmortykcmp.ui.core.extensions.aliveBackground
 import com.juancarlosnr.rickmortykcmp.ui.core.extensions.aliveBorder
+import org.jetbrains.compose.resources.stringResource
 import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.alive
+import rickandmortykmp.composeapp.generated.resources.dead
+import rickandmortykmp.composeapp.generated.resources.specie
 
 @Composable
 fun CharacterHeader(
@@ -60,7 +64,7 @@ fun CharacterHeader(
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Species: ${characterModel.specie}",
+                text = "${stringResource(Res.string.specie)} ${characterModel.specie}",
                 color = Color.Black
             )
         }
@@ -92,9 +96,9 @@ fun CharacterHeader(
                         contentScale = ContentScale.Crop
                     )
                 }
-                val aliveCopy = if (characterModel.isAlive) "ALIVE" else "DEAD"
+                val aliveCopy = if (characterModel.isAlive) stringResource(Res.string.alive) else stringResource(Res.string.dead)
                 Text(
-                    text = aliveCopy,
+                    text = aliveCopy.uppercase(),
                     color = Color.White,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
