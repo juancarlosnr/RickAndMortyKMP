@@ -12,3 +12,10 @@ fun Language.flagRes(): DrawableResource {
         Language.Spanish -> Res.drawable.ic_spain_language
     }
 }
+
+fun getLanguageName(language: Language, currentLanguageIso: String): String {
+    return when (language) {
+        Language.English -> if (currentLanguageIso == "es") "Inglés" else "English"
+        Language.Spanish -> if (currentLanguageIso == "es") "Español" else "Spanish"
+    }
+}

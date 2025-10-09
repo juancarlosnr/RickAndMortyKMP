@@ -11,5 +11,8 @@
     <string name="dead">muerto</string>
     <string name="character_information_title">Sobre el personaje</string>
     <string name="origin">Origen</string>
-    <string name="gender">Género</string>
+    <string name="gender">Género</string><string>
+    <string name="spanish_language">Español</string>
+    <string name="english_language">Inglés</string>
+</string>
 </resources>

@@ -29,7 +29,7 @@ androidx-sqliteBundled = "2.5.2"
 
 core-splashscreen = "1.0.1"
 
-settings = "1.0.3"
+settings = "1.3.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -79,7 +79,7 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 core-splashscreen = { group = "androidx.core", name= "core-splashscreen", version.ref="core-splashscreen"}
 
 # Settings
-remember-settings = { module = "dev.burnoo:compose-remember-setting", version.ref="settings"}
+remember-settings = { module = "com.russhwolf:multiplatform-settings", version.ref="settings"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

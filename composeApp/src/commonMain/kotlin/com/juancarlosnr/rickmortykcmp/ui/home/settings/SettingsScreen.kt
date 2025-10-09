@@ -86,6 +86,7 @@ fun SettingsScreen(
             LanguageRow(
                 language = language,
                 isSelected = language == state.selectedLanguage,
+                currentLanguageIso = state.selectedLanguage.iso,
                 onSelect = {
                     onEvent(SettingsEvent.LanguageSelected(it))
                 }

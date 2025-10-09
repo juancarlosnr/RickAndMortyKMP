@@ -1,5 +1,6 @@
 package com.juancarlosnr.rickmortykcmp.di
 
+import com.juancarlosnr.rickmortykcmp.ui.MainViewModel
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersViewModel
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.CharacterDetailViewModel
 import com.juancarlosnr.rickmortykcmp.ui.home.episodes.EpisodesViewModel
@@ -12,4 +13,5 @@ val uiModule = module {
     viewModelOf(::CharactersViewModel)
     viewModelOf(::CharacterDetailViewModel)
     viewModelOf(::SettingsViewModel)
+    viewModelOf(::MainViewModel)
 }

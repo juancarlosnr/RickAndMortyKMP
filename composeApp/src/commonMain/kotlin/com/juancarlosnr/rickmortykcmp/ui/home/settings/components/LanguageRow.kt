@@ -16,20 +16,29 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.juancarlosnr.rickmortykcmp.domain.utils.Language
 import com.juancarlosnr.rickmortykcmp.ui.core.extensions.flagRes
+import com.juancarlosnr.rickmortykcmp.ui.core.extensions.getLanguageName
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun LanguageRow(
     language: Language,
     isSelected: Boolean,
+    currentLanguageIso: String,
     onSelect: (Language) -> Unit
 ) {
+    val displayName by remember(language, currentLanguageIso) {
+        mutableStateOf(getLanguageName(language, currentLanguageIso))
+    }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,7 +60,7 @@ fun LanguageRow(
         Spacer(modifier = Modifier.width(12.dp))
 
         Text(
-            text = language.name,
+            text = displayName,
             fontSize = 18.sp
         )
 
