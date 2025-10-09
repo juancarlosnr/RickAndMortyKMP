@@ -1,0 +1,18 @@
+<resources>
+    <string name="selected_language">Seleccionar idioma</string>
+    <string name="episodes_tab">Episodios</string>
+    <string name="characters_tab">Personajes</string>
+    <string name="placeholder_player">¡Ay, tienen que ver el video, chicos! ¡Quizás sea importante o algo así!</string>
+    <string name="empty_characters">No hay personajes</string>
+    <string name="characters_title">Personajes</string>
+    <string name="episode_list_title">Lista de episodios</string>
+    <string name="specie">Especie: </string>
+    <string name="alive">vivo</string>
+    <string name="dead">muerto</string>
+    <string name="character_information_title">Sobre el personaje</string>
+    <string name="origin">Origen</string>
+    <string name="gender">Género</string><string>
+    <string name="spanish_language">Español</string>
+    <string name="english_language">Inglés</string>
+</string>
+</resources>

@@ -10,13 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
+import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.CharacterDetailEvent
 import org.jetbrains.compose.resources.painterResource
 import rickandmortykmp.composeapp.generated.resources.Res
 import rickandmortykmp.composeapp.generated.resources.space
 
 @Composable
 fun MainHeader(
-    characterModel: CharacterModel
+    characterModel: CharacterModel,
+    onEvent: (CharacterDetailEvent) -> Unit
 ){
     Box(
         modifier = Modifier
@@ -31,7 +33,8 @@ fun MainHeader(
             contentDescription = ""
         )
         CharacterHeader(
-            characterModel = characterModel
+            characterModel = characterModel,
+            onEvent = onEvent
         )
     }
 }

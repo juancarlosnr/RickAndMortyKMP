@@ -13,3 +13,5 @@ sealed class Routes(
 
 @Serializable
 data class CharacterDetail(val characterModel: String)
+@Serializable
+data object Settings

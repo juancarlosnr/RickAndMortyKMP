@@ -13,12 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.ui.core.DefaultTextColor
 import com.juancarlosnr.rickmortykcmp.ui.core.PlaceholderColor
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import rickandmortykmp.composeapp.generated.resources.Res
 import rickandmortykmp.composeapp.generated.resources.placeholder
+import rickandmortykmp.composeapp.generated.resources.placeholder_player
 
 @Composable
 fun PlaceHolderPlayer(){
@@ -41,9 +44,10 @@ fun PlaceHolderPlayer(){
             Text(
                 modifier = Modifier
                     .padding(16.dp),
-                text = "Aw jeez, you gotta click the video, guys! I mean, it might be important or something!",
+                text = stringResource(Res.string.placeholder_player),
                 color = DefaultTextColor,
-                fontStyle = FontStyle.Italic
+                fontStyle = FontStyle.Italic,
+                textAlign = TextAlign.Center
             )
         }
     }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundPrimaryColor
 import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundSecondaryColor
+import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersActions
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.components.CharacterEpisodesList
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.components.CharacterInformation
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.components.MainHeader
@@ -27,20 +29,32 @@ import org.koin.core.parameter.parameterSetOf
 
 @Composable
 fun CharacterDetailScreenRoot(
-    characterModel: CharacterModel
+    characterModel: CharacterModel,
+    navigateBack:() -> Unit
 ) {
     val characterDetailViewModel =
         koinViewModel<CharacterDetailViewModel>(parameters = { parameterSetOf(characterModel) })
 
     val state by characterDetailViewModel.uiState.collectAsState()
+
+    LaunchedEffect(key1 = Unit) {
+        characterDetailViewModel.characterDetailActions.collect { action ->
+            when (action) {
+                CharacterDetailActions.NavigateBack -> navigateBack()
+            }
+        }
+    }
+
     CharacterDetailScreen(
-        state = state
+        state = state,
+        onEvent = characterDetailViewModel::onEvent
     )
 }
 
 @Composable
 fun CharacterDetailScreen(
-    state: CharacterDetailState
+    state: CharacterDetailState,
+    onEvent: (CharacterDetailEvent) -> Unit
 ) {
     val scrollState = rememberScrollState()
 
@@ -53,7 +67,8 @@ fun CharacterDetailScreen(
 
     ) {
         MainHeader(
-            characterModel = state.characterModel
+            characterModel = state.characterModel,
+            onEvent = onEvent
         )
         Spacer(modifier = Modifier.height(16.dp))
         Column(

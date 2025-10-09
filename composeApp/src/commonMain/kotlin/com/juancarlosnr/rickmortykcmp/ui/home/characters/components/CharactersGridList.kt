@@ -26,6 +26,10 @@ import com.juancarlosnr.rickmortykcmp.ui.core.Green
 import com.juancarlosnr.rickmortykcmp.ui.core.components.paging.PagingType
 import com.juancarlosnr.rickmortykcmp.ui.core.components.paging.PagingWrapper
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.CharactersEvent
+import org.jetbrains.compose.resources.stringResource
+import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.characters_title
+import rickandmortykmp.composeapp.generated.resources.empty_characters
 
 @Composable
 fun CharactersGridList(
@@ -64,7 +68,7 @@ fun CharactersGridList(
                 )
             },
             emptyView = {
-                Text("No hay personajes")
+                Text(stringResource(Res.string.empty_characters))
             },
             extraItemsView = {
                 Box(
@@ -83,7 +87,7 @@ fun CharactersGridList(
             extraView = {
                 Column {
                     Text(
-                        "Characters",
+                        stringResource(Res.string.characters_title),
                         color = DefaultTextColor,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.SemiBold

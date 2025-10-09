@@ -13,6 +13,11 @@ import androidx.compose.ui.unit.dp
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.ui.core.BackgroundTertiaryColor
 import com.juancarlosnr.rickmortykcmp.ui.core.components.TextTitle
+import org.jetbrains.compose.resources.stringResource
+import rickandmortykmp.composeapp.generated.resources.Res
+import rickandmortykmp.composeapp.generated.resources.character_information_title
+import rickandmortykmp.composeapp.generated.resources.gender
+import rickandmortykmp.composeapp.generated.resources.origin
 
 @Composable
 fun CharacterInformation(
@@ -31,12 +36,12 @@ fun CharacterInformation(
                 .padding(16.dp)
         ) {
             TextTitle(
-                text = "ABOUT THE CHARACTER"
+                text = stringResource(Res.string.character_information_title).uppercase()
             )
             Spacer(modifier = Modifier.height(6.dp))
-            InformationDetail("Origin",characterModel.origin)
+            InformationDetail(stringResource(Res.string.origin),characterModel.origin)
             Spacer(modifier = Modifier.height(2.dp))
-            InformationDetail("Gender",characterModel.gender)
+            InformationDetail(stringResource(Res.string.gender),characterModel.gender)
         }
     }
 }
