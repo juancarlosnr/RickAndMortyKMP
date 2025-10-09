@@ -5,6 +5,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.KoinAppDeclaration
 
 expect fun platformModule(): Module
+expect fun targetModule(): Module
 fun initKoin(config: KoinAppDeclaration? = null){
     startKoin {
         config?.invoke(this)
@@ -12,7 +13,8 @@ fun initKoin(config: KoinAppDeclaration? = null){
             uiModule,
             domainModule,
             dataModule,
-            platformModule()
+            platformModule(),
+            targetModule()
         )
     }
 }
