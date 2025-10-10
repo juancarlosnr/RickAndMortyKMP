@@ -1,9 +1,9 @@
 package com.juancarlosnr.rickmortykcmp.di
 
-import com.juancarlosnr.rickmortykcmp.data.repositories.RepositoryImpl
 import com.juancarlosnr.rickmortykcmp.data.remote.ApiService
 import com.juancarlosnr.rickmortykcmp.data.remote.paging.CharactersPagingSource
 import com.juancarlosnr.rickmortykcmp.data.remote.paging.EpisodesPagingSource
+import com.juancarlosnr.rickmortykcmp.data.repositories.RepositoryImpl
 import com.juancarlosnr.rickmortykcmp.domain.repositories.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
@@ -33,7 +33,7 @@ val dataModule = module {
         }
     }
     factoryOf(::ApiService)
-    factory<Repository> { RepositoryImpl(get(),get(),get(),get()) }
+    factory<Repository> { RepositoryImpl(get(), get(), get(), get(), get()) }
     factoryOf(::CharactersPagingSource)
     factoryOf(::EpisodesPagingSource)
 }

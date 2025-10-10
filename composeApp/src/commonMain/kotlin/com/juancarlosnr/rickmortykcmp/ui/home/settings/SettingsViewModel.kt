@@ -2,9 +2,9 @@ package com.juancarlosnr.rickmortykcmp.ui.home.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.juancarlosnr.rickmortykcmp.domain.repositories.Repository
 import com.juancarlosnr.rickmortykcmp.domain.utils.Language
 import com.juancarlosnr.rickmortykcmp.domain.utils.Localization
-import com.russhwolf.settings.Settings
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class SettingsViewModel(
     private val localization: Localization,
-    private val settings: Settings
+    private val repository: Repository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(SettingsState())
@@ -23,16 +23,12 @@ class SettingsViewModel(
     private val _settingsActions = Channel<SettingsActions>()
     val settingsActions = _settingsActions.receiveAsFlow()
 
-    companion object {
-        private const val KEY_LANGUAGE = "savedLanguageIso"
-    }
-
     init {
         getLanguage()
     }
 
     private fun getLanguage() {
-        val savedIso = settings.getStringOrNull(KEY_LANGUAGE) ?: Language.English.iso
+        val savedIso = repository.getSavedLanguage() ?: Language.English.iso
         val language = Language.entries.first { it.iso == savedIso }
         _state.update { it.copy(selectedLanguage = language) }
     }
@@ -50,7 +46,7 @@ class SettingsViewModel(
     }
 
     fun selectLanguage(language: Language) {
-        settings.putString(KEY_LANGUAGE,language.iso)
+        repository.saveLanguage(language = language.iso)
         localization.applyLanguage(language.iso)
         _state.update { state ->
             state.copy(selectedLanguage = language)

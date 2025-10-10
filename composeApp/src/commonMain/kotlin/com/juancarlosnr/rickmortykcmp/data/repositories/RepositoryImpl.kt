@@ -15,18 +15,21 @@ import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterOfTheDayModel
 import com.juancarlosnr.rickmortykcmp.domain.model.EpisodeModel
 import com.juancarlosnr.rickmortykcmp.domain.repositories.Repository
+import com.russhwolf.settings.Settings
 import kotlinx.coroutines.flow.Flow
 
 class RepositoryImpl(
     private val apiService: ApiService,
     private val charactersPagingSource: CharactersPagingSource,
     private val episodesPagingSource: EpisodesPagingSource,
-    private val rickMortyDatabase: RickMortyDatabase
+    private val rickMortyDatabase: RickMortyDatabase,
+    private val settings: Settings
 ) : Repository {
 
     companion object{
         const val MAX_ITEMS = 20
         const val PREFETCH_ITEMS = 4
+        const val KEY_LANGUAGE = "savedLanguageIso"
     }
 
     override suspend fun getSingleCharacter(id: String): CharacterModel {
@@ -78,5 +81,13 @@ class RepositoryImpl(
                 listOf(apiService.getSingleEpisode(episodes.first()).toEpisodeModel())
             }
         }
+    }
+
+    override fun getSavedLanguage(): String? {
+        return settings.getStringOrNull(KEY_LANGUAGE)
+    }
+
+    override fun saveLanguage(language: String) {
+        settings.putString(KEY_LANGUAGE,language)
     }
 }

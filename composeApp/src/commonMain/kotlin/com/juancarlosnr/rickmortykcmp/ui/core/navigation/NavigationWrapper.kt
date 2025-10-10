@@ -1,9 +1,6 @@
 package com.juancarlosnr.rickmortykcmp.ui.core.navigation
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material3.Switch
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -11,7 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.juancarlosnr.rickmortykcmp.domain.model.CharacterModel
-import com.juancarlosnr.rickmortykcmp.domain.utils.Language
 import com.juancarlosnr.rickmortykcmp.ui.home.HomeScreen
 import com.juancarlosnr.rickmortykcmp.ui.home.characters.detail.CharacterDetailScreenRoot
 import com.juancarlosnr.rickmortykcmp.ui.home.settings.SettingsScreenRoot
