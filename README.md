@@ -88,5 +88,6 @@ https://rickandmortyapi.com/api/character
 - [ ] Tests unitarios y de integración
 - [x] Añadir Github Actions
 - [ ] Añadir Previews para cada pantalla
+- [ ] Añadir aplicacion en desktop
 
 ---
