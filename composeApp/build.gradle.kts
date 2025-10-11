@@ -139,10 +139,17 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "com.aristidevs.rickmortykapp"
-            version = "1.0.0"
+            packageVersion = "1.0.0" // It's good practice to use packageVersion
 
+            macOS { // Corrected from macOs to macOS
+                iconFile.set(project.file("resources/icon.icns"))
+            }
 
+            windows { // Example for when you uncomment it
+                iconFile.set(project.file("resources/icon.ico"))
+            }
         }
+
     }
 }
 

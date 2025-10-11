@@ -13,6 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import rickandmortykmp.composeapp.generated.resources.Res
+import org.jetbrains.compose.resources.stringResource
+import rickandmortykmp.composeapp.generated.resources.generic_error
+import rickandmortykmp.composeapp.generated.resources.vlc_error
 
 @Composable
 fun VlcNotInstalledMessage(modifier: Modifier = Modifier) {
@@ -25,13 +29,13 @@ fun VlcNotInstalledMessage(modifier: Modifier = Modifier) {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = "Ha ocurrido un error",
+                text = stringResource(Res.string.generic_error),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
             Text(
-                text = "Necesitas instalar VLC para poder visualizar los episodios.",
+                text = stringResource(Res.string.vlc_error),
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(top = 8.dp),
                 color = Color.White
