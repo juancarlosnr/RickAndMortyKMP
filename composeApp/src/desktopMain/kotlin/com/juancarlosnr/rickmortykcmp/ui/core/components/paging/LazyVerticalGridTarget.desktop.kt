@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollbarAdapter
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,7 +34,7 @@ actual fun <T : Any> LazyVerticalGridTarget(
     ) {
         LazyVerticalGrid(
             state = lazyState,
-            columns = GridCells.Adaptive(100.dp),
+            columns = GridCells.Adaptive(180.dp),
             horizontalArrangement = horizontalArrangement,
             verticalArrangement = verticalArrangement,
             modifier = Modifier.weight(1f)

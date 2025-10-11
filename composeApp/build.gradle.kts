@@ -92,6 +92,7 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.ktor.client.cio)
+            implementation("uk.co.caprica:vlcj:4.11.0")
         }
     }
 }
