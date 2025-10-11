@@ -14,4 +14,6 @@
     <string name="gender">Gender</string>
     <string name="spanish_language">Spanish</string>
     <string name="english_language">English</string>
+    <string name="generic_error">An error has occurred</string>
+    <string name="vlc_error">You need to install VLC to watch the episodes.</string>
 </resources>

@@ -47,16 +47,11 @@ fun <T: Any> PagingWrapper(
         else -> {
             when(pagingType){
                 PagingType.ROW -> {
-                    LazyRow {
-                        item {
-                            extraView()
-                        }
-                        items(pagingItems.itemCount){ pos ->
-                            pagingItems[pos]?.let { item ->
-                                itemView(item)
-                            }
-                        }
-                    }
+                    LazyRowTarget(
+                        pagingItems = pagingItems,
+                        itemView = itemView,
+                        extraView = extraView
+                    )
                 }
                 PagingType.COLUMN -> {
                     LazyColumn {
@@ -71,24 +66,14 @@ fun <T: Any> PagingWrapper(
                     }
                 }
                 PagingType.VERTICAL_GRID -> {
-                    LazyVerticalGrid(
-                        columns = verticalGridCells,
-                        horizontalArrangement = horizontalArrangement,
-                        verticalArrangement = verticalArrangement
-                    ) {
-                        item(
-                            span = {
-                                GridItemSpan(maxLineSpan)
-                            }
-                        ) {
-                            extraView()
-                        }
-                        items(pagingItems.itemCount){ pos ->
-                            pagingItems[pos]?.let { item ->
-                                itemView(item)
-                            }
-                        }
-                    }
+                   LazyVerticalGridTarget(
+                       pagingItems = pagingItems,
+                       verticalGridCells = verticalGridCells,
+                       horizontalArrangement = horizontalArrangement,
+                       verticalArrangement = verticalArrangement,
+                       extraView = extraView,
+                       itemView = itemView
+                   )
                 }
                 PagingType.HORIZONTAL_GRID -> {
                     LazyHorizontalGrid(horizontalGridCells) {
