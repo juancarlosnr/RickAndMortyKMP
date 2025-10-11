@@ -24,7 +24,9 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
+    jvm(name = "desktop")
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -35,8 +37,10 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
+        val desktopMain by getting
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -83,6 +87,13 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
+
+        desktopMain.dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.ktor.client.cio)
+            implementation("uk.co.caprica:vlcj:4.11.0")
+        }
     }
 }
 
@@ -119,6 +130,27 @@ dependencies {
     add("kspIosSimulatorArm64", libs.room.compiler)
     add("kspIosX64", libs.room.compiler)
     add("kspIosArm64", libs.room.compiler)
+    add("kspDesktop",libs.room.compiler)
+}
+
+compose.desktop {
+    application {
+        mainClass = "com.juancarlosnr.rickmortykcmp.MainKt"
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "com.aristidevs.rickmortykapp"
+            packageVersion = "1.0.0" // It's good practice to use packageVersion
+
+            macOS { // Corrected from macOs to macOS
+                iconFile.set(project.file("resources/icon.icns"))
+            }
+
+            windows { // Example for when you uncomment it
+                iconFile.set(project.file("resources/icon.ico"))
+            }
+        }
+
+    }
 }
 
 
